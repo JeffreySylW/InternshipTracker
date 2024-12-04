@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Internship Application Tracker",
+  "version": "1.0",
+  "description": "Track internship applications in Google Sheets",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://www.linkedin.com/*",
+    "https://app.joinhandshake.com/*",
+    "https://sheets.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "834672953424-s975f8sohp1qqqmp6t6sprukv9fe4bf7.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets"
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": [
+      "https://www.linkedin.com/jobs/*",
+      "https://app.joinhandshake.com/stu/jobs/*",
+      "<all_urls>"
+    ],
+    "js": ["content.js"]
+  }]
+}
